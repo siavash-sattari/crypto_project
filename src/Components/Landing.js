@@ -7,6 +7,10 @@ import {getCoin} from "../services/api";
 import Loader from "./Loader";
 import Coin from "./Coin";
 
+// Styles
+import styles from "./Landing.module.css"
+
+
 export default function Landing() {
   const [coins, setCoins] = useState([]);
   const [search, setSearch] = useState("");
@@ -29,9 +33,9 @@ export default function Landing() {
 
   return (
     <>
-      <input type="text" placeholder="Search" value={search} onChange={serachHandler} />
+      <input className={styles.input} type="text" placeholder="Search" value={search} onChange={serachHandler} />
       {coins.length ? (
-        <div>
+        <div className={styles.coinContainer}>
           {serachedCoins.map((coin) => (
             <Coin key={coin.id} name={coin.name} image={coin.image} symbol={coin.symbol} price={coin.current_price} marketCap={coin.market_cap} priceChange={coin.price_change_percentage_24h} />
           ))}
